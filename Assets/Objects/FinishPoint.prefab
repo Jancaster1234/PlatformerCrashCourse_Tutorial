@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2922450960308509314}
   - component: {fileID: 3873902639686588795}
   - component: {fileID: 1217514212462730577}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FinishPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.062989235, y: -1.5865223}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -129,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 16, y: 16}
+  m_Size: {x: 13.091583, y: 12.826956}
   m_EdgeRadius: 0
 --- !u!114 &1217514212462730577
 MonoBehaviour:
@@ -143,3 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37c284460a99ee4796c1064976a05f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSceneName: 
