@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/QuitScene.unity
     guid: aadea75cf5e13c64e99b5e385a851fe5
+  - enabled: 1
+    path: Assets/SlimUI/Modern Menu 1/Scenes/Demos/Demo1.unity
+    guid: 829a86ba161cdd840842063447f41aab
+  - enabled: 1
+    path: Assets/Scenes/GameplayScene 3.unity
+    guid: 59baab276be092e43a57dae20beb9507
   m_configObjects: {}

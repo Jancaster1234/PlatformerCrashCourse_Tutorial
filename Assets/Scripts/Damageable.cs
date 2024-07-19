@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,6 @@ public class Damageable : MonoBehaviour
     public UnityEvent<int, Vector2> damageableHit;
     public UnityEvent damageableDeath;
     public UnityEvent<int, int> healthChanged;
-
     Animator animator;
 
     [SerializeField]
@@ -41,9 +41,15 @@ public class Damageable : MonoBehaviour
             healthChanged?.Invoke(_health, MaxHealth);
 
             // If health drops below 0, character is no longer alive
-            if(_health <= 0)
+            // If health drops below 0, character is no longer alive
+            if (_health <= 0 && IsAlive)
             {
                 IsAlive = false;
+                // Check if this is the BringerOfDeath
+                if (gameObject.name == "BringerOfDeath")
+                {
+                    GameManager.Instance.SaveScoreToFile("score.txt");
+                }
             }
         }
     }
@@ -71,7 +77,7 @@ public class Damageable : MonoBehaviour
             if(value == false)
             {
                 damageableDeath.Invoke();
-            }
+            } 
         }
     }
 

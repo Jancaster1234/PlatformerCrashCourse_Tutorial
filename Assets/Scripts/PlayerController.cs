@@ -1,9 +1,9 @@
-using System;
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damageable))]
 public class PlayerController : MonoBehaviour
@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
             // Flip only if value is new
             if (_isFacingRight != value)
             {
-                // Flip the local scale to make the player face the opposite directino
+                // Flip the local scale to make the player face the opposite direction
                 transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
             }
             _isFacingRight = value;
@@ -195,5 +195,25 @@ public class PlayerController : MonoBehaviour
     public void OnHit(int damage, Vector2 knockback)
     {
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+    }
+
+    public void OnBackspace(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            SaveGameState();
+            Debug.Log("Backspace key pressed. Loading scene 'Demo1'.");
+            SceneManager.LoadScene("Demo1");
+        }
+    }
+
+    private void SaveGameState()
+    {
+        GameState gameState = new GameState
+        {
+            Score = GameManager.Instance.Score,
+            // Set other game state variables here
+        };
+        gameState.Save("SaveGame.json");
     }
 }

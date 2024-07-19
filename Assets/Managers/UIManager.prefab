@@ -47,7 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageTextPrefab: {fileID: 3622570434297259005, guid: 8969dc3e70b867547b8a25a1b74b094e, type: 3}
   healthTextPrefab: {fileID: 3622570434297259005, guid: 087de78dbc0fe174d98208b99fd8b3cb, type: 3}
+  scoreText: {fileID: 0}
   gameCanvas: {fileID: 0}
+  pauseGameScreen: {fileID: 4113481210710246777, guid: 695b24423965cd9489423810ca371568, type: 3}
+  gameOverScreen: {fileID: 7324568217126574532, guid: 42c812a2e47b6dd408dd0f5f6a45e6ed, type: 3}
 --- !u!114 &7379062176894355700
 MonoBehaviour:
   m_ObjectHideFlags: 0

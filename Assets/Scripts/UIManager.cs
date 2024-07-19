@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,12 +9,30 @@ public class UIManager : MonoBehaviour
 {
     public GameObject damageTextPrefab;
     public GameObject healthTextPrefab;
-
+    public TextMeshProUGUI scoreText;
+    private int score;
     public Canvas gameCanvas;
 
     private void Awake()
     {
-        gameCanvas = FindObjectOfType<Canvas>();
+        if (scoreText == null)
+        {
+            Debug.LogError("ScoreText is not assigned. Please assign it in the Inspector.");
+            return;
+        }
+
+        if (gameCanvas == null)
+        {
+            Debug.LogError("GameCanvas is not assigned. Please assign it in the Inspector.");
+            return;
+        }
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("GameManager.Instance is not assigned. Please ensure GameManager is in the scene.");
+            return;
+        }
+        UpdateScoreText();
+
     }
 
     private void OnEnable()
@@ -37,6 +56,10 @@ public class UIManager : MonoBehaviour
             .GetComponent<TMP_Text>();
 
         tmpText.text = damageReceived.ToString();
+
+        // Update score
+        GameManager.Instance.Score += damageReceived;
+        UpdateScoreText();
     }
 
     public void CharacterHealed(GameObject character, int healthRestored)
@@ -49,6 +72,12 @@ public class UIManager : MonoBehaviour
 
         tmpText.text = healthRestored.ToString();
     }
+
+    private void UpdateScoreText()
+    {
+        scoreText.text = "Score: " + GameManager.Instance.Score.ToString();
+    }
+
 
     public void OnExitGame(InputAction.CallbackContext context)
     {
